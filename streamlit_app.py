@@ -1,4 +1,5 @@
 from collections import namedtuple
+from turtle import down
 import altair as alt
 import math
 import pandas as pd
@@ -32,18 +33,12 @@ with st.echo(code_location='below'):
     options = st.multiselect(
         'Which variables would you like to select?',
         ['g0', 'g1', 'g2', 'g3'])
-     
-
-    """    #Limit to three variables 
     if options :
         if len(options) <= 2:
             st.write(options)
         else:
             st.warning("Please only select two variables")
 
-    st.write('You selected:', options)"""
-    
-    
     def TumorModel(dRp, Rp, c1, g5, g6, s, g1, Phi_i, Phi_n, ae, n_i, c2):
         dRp = (Rp/3)[[(c1(g5+g6)-s*g1)/15][Rp*Rp]+(s*Phi_i)-(s*Phi_n)-[(s*2*ae)/Rp]-c1(n_i)-c2]
         return dRp
@@ -62,7 +57,7 @@ with st.echo(code_location='below'):
 import plotly.express as px
 import streamlit as st
 tumor = px.data.tumor()
-fig = px.scatter_3d(tumor, x="", y="", z="", color="", size="", hover_name="dRp",
+fig = px.scatter_3d(tumor, x="dRp", y="", z="", color="", size="", hover_name="dRp",
                   symbol="sphere", color_discrete_map = {"": "teal", "": "pink", "":"orange"})
 st.write(fig)
 ##create list of options and then assign each option to x, y, z? 
