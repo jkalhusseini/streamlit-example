@@ -3,8 +3,6 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
-#import plotly.graph_objects as go
-#import plotly.figure_factory as ff
 import numpy as np
 
 
@@ -33,19 +31,6 @@ with st.echo(code_location='below'):
     Point = namedtuple('Point', 'x y')
     data = []
 
-    def TumorModel(dRp, Rp, c1, g5, g6, s, g1, Phi_i, Phi_n, ae, n_i, c2):
-        dRp = (Rp/3)[[(c1(g5+g6)-s*g1)/15][Rp*Rp]+(s*Phi_i)-(s*Phi_n)-[(s*2*ae)/Rp]-c1(n_i)-c2]
-
-    for dRp in range(g0):
-        TumorModel()
-        x = dRp
-        y = [VarSelector1]
-        z = [VarSelector2]
-
-    fig = go.Figure(data=[go.surface(x = dRp, y = [VarSelector1], z = [VarSelector2])])
-    st.plotly_chart
-
-            
     #Create drop down menu to select variables 
     options = st.multiselect(
      'Which variables would you like to select?',
@@ -61,6 +46,20 @@ with st.echo(code_location='below'):
 
     st.write('You selected:', options)
     
+    def TumorModel(dRp, Rp, c1, g5, g6, s, g1, Phi_i, Phi_n, ae, n_i, c2):
+        dRp = (Rp/3)[[(c1(g5+g6)-s*g1)/15][Rp*Rp]+(s*Phi_i)-(s*Phi_n)-[(s*2*ae)/Rp]-c1(n_i)-c2]
+
+        """    for dRp in range(g0):
+        TumorModel()
+        x = dRp
+        y = [VarSelector1]
+        z = [VarSelector2]"""
+
+    import plotly.graph_objects as go
+    import plotly.figure_factory as ff
+    
+    fig = go.Figure(data=[go.surface(x = dRp, y = [VarSelector1], z = [VarSelector2])])
+    st.plotly_chart
 
     """for curr_point_num in range(g0):
         curr_turn, i = divmod(curr_point_num, points_per_turn)
