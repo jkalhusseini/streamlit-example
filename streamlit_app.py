@@ -35,6 +35,18 @@ with st.echo(code_location='below'):
 
     for dRp in range(g0):
         TumorModel()
+        x = dRp
+        y = [VarSelector1]
+        z = [VarSelector2]
+
+    options = st.multiselect(
+     'Which sliders would you like to select',
+     ['Rate of nutrient consumption', 'Nutrient supply degradation (ext. inhibitor)', 'External inhibitor degradation', 'Inhibitor generation by tumor'],
+     ['Rate of NP binding', 'Rate of NP degradation'])
+
+    st.write('You selected:', options)
+    
+
     """for curr_point_num in range(g0):
         curr_turn, i = divmod(curr_point_num, points_per_turn)
         angle = (curr_turn + 1) * 2 * math.pi * i / points_per_turn
