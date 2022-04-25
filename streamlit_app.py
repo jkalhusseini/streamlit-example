@@ -9,7 +9,7 @@ import numpy as np
 with st.echo(code_location='below'):
 
     #Clinical slider parameters
-    g0 = st.slider("Rate of nutrient consumption", 1, 500, (20-100))
+    g0 = st.slider("Rate of nutrient consumption", 1, 500, (20,100))
     g1 = st.slider("Nutrient supply degradation (ext. inhibitor)", 1, 10, 1-5)
     g2 = st.slider("External inhibitor degradation", 1, 10, 1-5)
     g3 = st.slider("Inhibitor generation by tumor", 1, 10, 1-5)
