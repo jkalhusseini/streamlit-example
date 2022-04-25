@@ -30,20 +30,20 @@ with st.sidebar:
 
 
     #Create drop down menu to select variables 
-        options = st.multiselect(
-            'Which variables would you like to select?',
-            ['g0', 'g1', 'g2', 'g3'])
-        if options :
-            if len(options) <= 2:
-                st.write()
-                list_options = []
-                list_options.append(options)
-            else:
-                st.warning("Please only select two variables")
+    options = st.multiselect(
+        'Which variables would you like to select?',
+        ['g0', 'g1', 'g2', 'g3'])
+    if options :
+        if len(options) <= 2:
+            st.write()
+            list_options = []
+            list_options.append(options)
+        else:
+            st.warning("Please only select two variables")
 
-    #Assigning user's first and second variables to y and z, to be used in 3D scatter plot
-    y = list_options[0]
-    z = list_options[1]
+    #Establishing user's first and second variables, to be used in 3D scatter plot
+    var1 = list_options[0]
+    var2 = list_options[1]
 
     def TumorModel(dRp, Rp, c1, g5, g6, s, g1, Phi_i, Phi_n, ae, n_i, c2):
         dRp = (Rp/3)[[(c1(g5+g6)-s*g1)/15][Rp*Rp]+(s*Phi_i)-(s*Phi_n)-[(s*2*ae)/Rp]-c1(n_i)-c2]
@@ -63,7 +63,7 @@ with st.sidebar:
 import plotly.express as px
 import streamlit as st
 tumor = px.data.tumor()
-fig = px.scatter_3d(tumor, x="dRp", y="", z="", color="", size="", hover_name="dRp",
+fig = px.scatter_3d(tumor, x="dRp", y="var1", z="var2", color="", size="", hover_name="dRp",
                   symbol="sphere", color_discrete_map = {"": "teal", "": "pink", "":"orange"})
 st.write(fig)
 ##create list of options and then assign each option to x, y, z? 
