@@ -27,7 +27,9 @@ with st.sidebar:
         Phi_i = 1
         Phi_n = 0.6
         n_i = 1
+        
 
+with st.echo(code_location='below'):
 
     #Create drop down menu to select variables 
     options = st.multiselect(
