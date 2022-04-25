@@ -4,7 +4,6 @@ import math
 import pandas as pd
 import streamlit as st
 import numpy as np
-import plotly.graph_objects as go
 
 
 
@@ -53,7 +52,6 @@ with st.echo(code_location='below'):
         dRp = (Rp/3)[[(c1(g5+g6)-s*g1)/15][Rp*Rp]+(s*Phi_i)-(s*Phi_n)-[(s*2*ae)/Rp]-c1(n_i)-c2]
         return dRp
 
-
-    fig = go.Figure(data = [go.Scatter3d(x=[g6], y=[var1], z=[var2])])
-    fig.show()
-
+import plotly.graph_objects as go
+fig = go.Figure(data = [go.Scatter3d(x=[g6], y=[var1], z=[var2])])
+fig.show()
