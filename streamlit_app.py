@@ -1,5 +1,4 @@
 from collections import namedtuple
-from turtle import down
 import altair as alt
 import math
 import pandas as pd
