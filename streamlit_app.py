@@ -43,28 +43,28 @@ with st.echo(code_location='below'):
             st.warning("Please only select two variables")
 
     #Establishing user's first and second variables, to be used in 3D scatter plot
-    var1 = list_options[0]
-    var2 = list_options[1]
+    #var1 = list_options[0]
+    #var2 = list_options[1]
 
     def TumorModel(dRp, Rp, c1, g5, g6, s, g1, Phi_i, Phi_n, ae, n_i, c2):
         dRp = (Rp/3)[[(c1(g5+g6)-s*g1)/15][Rp*Rp]+(s*Phi_i)-(s*Phi_n)-[(s*2*ae)/Rp]-c1(n_i)-c2]
         return dRp
 
     data = pd.DataFrame(TumorModel())
+    print(data)
 
     import plotly.graph_objects as go
     import plotly.figure_factory as ff
     
 """    fig = go.Figure(data=[go.surface()])
     st.plotly_chart
-    fig.show()"""
+    fig.show()
+"""
 
 
-""""""
+
 import plotly.express as px
-import streamlit as st
-tumor = px.data.tumor()
+tumor = px.data.TumorModel(var1,var2)
 fig = px.scatter_3d(tumor, x="dRp", y="var1", z="var2", color="", size="", hover_name="dRp",
                   symbol="sphere", color_discrete_map = {"dRp": "teal", "var2": "pink", "var3":"orange"})
 st.write(fig) 
-""""""
