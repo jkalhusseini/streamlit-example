@@ -4,7 +4,7 @@ import math
 import pandas as pd
 import streamlit as st
 import numpy as np
-import plotly.express as px
+import plotly.graph_objects as go
 
 
 
@@ -54,8 +54,6 @@ with st.echo(code_location='below'):
         return dRp
 
 
-    fig = px.scatter_3d(x=g6, y=var1, z=var2, color="black", size="300", hover_name="dRp",
-                  symbol="sphere", color_discrete_map = {"dRp": "teal", "var2": "pink", "var3":"orange"})
-    st.write(fig)
-    print(fig)
+    fig = go.Figure(data = [go.Scatter3d(x=[g6], y=[var1], z=[var2])])
+    fig.show()
 
