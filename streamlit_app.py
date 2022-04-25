@@ -31,8 +31,8 @@ with st.echo(code_location='below'):
     #Create drop down menu to select variables 
     options = st.multiselect(
      'Which variables would you like to select?',
-     ['Rate of nutrient consumption', 'Nutrient supply degradation (ext. inhibitor)', 'External inhibitor degradation', 'Inhibitor generation by tumor'],
-     ['Rate of NP binding', 'Rate of NP degradation'])
+     ['g0', 'g1', 'g2', 'g3'],
+     ['g5', 'g6'])
 
     #Limit to three variables 
     if options :
@@ -52,11 +52,16 @@ with st.echo(code_location='below'):
     import plotly.graph_objects as go
     import plotly.figure_factory as ff
     
-    fig = go.Figure(data=[go.surface()])
+"""    fig = go.Figure(data=[go.surface()])
     st.plotly_chart
-    fig.show()
+    fig.show()"""
 
 
-    st.altair_chart(alt.Chart(pd.DataFrame(data), height=500, width=500)
-        .mark_circle(color='#0068c9', opacity=0.5)
-        .encode(x='x:Q', y='y:Q'))
+""""""
+import plotly.express as px
+import streamlit as st
+tumor = px.data.tumor()
+fig = px.scatter_3d(tumor, x="", y="", z="", color="", size="", hover_name="dRp",
+                  symbol="", color_discrete_map = {"": "blue", "": "green", "":"red"})
+st.write(fig)
+""""""
