@@ -46,9 +46,6 @@ with st.echo(code_location='below'):
     var1 = list_options[0]
     var2 = list_options[1]
 
-
-ok I thought that would work 
-but 
     def TumorModel(dRp, Rp, c1, g5, g6, s, g1, Phi_i, Phi_n, ae, n_i, c2):
         dRp = (Rp/3)[[(c1(g5+g6)-s*g1)/15][Rp*Rp]+(s*Phi_i)-(s*Phi_n)-[(s*2*ae)/Rp]-c1(n_i)-c2]
         return dRp
@@ -68,7 +65,6 @@ import plotly.express as px
 import streamlit as st
 tumor = px.data.tumor()
 fig = px.scatter_3d(tumor, x="dRp", y="var1", z="var2", color="", size="", hover_name="dRp",
-                  symbol="sphere", color_discrete_map = {"": "teal", "": "pink", "":"orange"})
-st.write(fig)
-##create list of options and then assign each option to x, y, z? 
+                  symbol="sphere", color_discrete_map = {"dRp": "teal", "var2": "pink", "var3":"orange"})
+st.write(fig) 
 """"""
