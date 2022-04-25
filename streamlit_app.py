@@ -3,8 +3,8 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
-import plotly.graph_objects as go
-import plotly.figure_factory as ff
+#import plotly.graph_objects as go
+#import plotly.figure_factory as ff
 import numpy as np
 
 
