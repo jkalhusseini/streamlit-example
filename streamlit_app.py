@@ -7,7 +7,6 @@ import numpy as np
 
 
 with st.sidebar:
-    with st.echo(code_location='below'):
 
     #Clinical slider parameters
         g0 = st.slider("Rate of nutrient consumption", 1, 500, (20,100))
@@ -47,6 +46,9 @@ with st.echo(code_location='below'):
     var1 = list_options[0]
     var2 = list_options[1]
 
+
+ok I thought that would work 
+but 
     def TumorModel(dRp, Rp, c1, g5, g6, s, g1, Phi_i, Phi_n, ae, n_i, c2):
         dRp = (Rp/3)[[(c1(g5+g6)-s*g1)/15][Rp*Rp]+(s*Phi_i)-(s*Phi_n)-[(s*2*ae)/Rp]-c1(n_i)-c2]
         return dRp
