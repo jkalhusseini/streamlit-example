@@ -10,15 +10,15 @@ with st.echo(code_location='below'):
 
     #Clinical slider parameters
     g0 = st.slider("Rate of nutrient consumption", 1, 500, (20,100))
-    g1 = st.slider("Nutrient supply degradation (ext. inhibitor)", 1, 10, 1-5)
-    g2 = st.slider("External inhibitor degradation", 1, 10, 1-5)
-    g3 = st.slider("Inhibitor generation by tumor", 1, 10, 1-5)
-    g4 = st.slider("Inhibitor degradation by tumor", 1, 10, 1-5)
-    g5 = st.slider("Rate of NP binding", 1, 10, 1-5)
-    g6 = st.slider("Rate of NP degradation", 1, 10, 1-5)
+    g1 = st.slider("Nutrient supply degradation (ext. inhibitor)", 1, 10, (1,5))
+    g2 = st.slider("External inhibitor degradation", 1, 10, (1,5))
+    g3 = st.slider("Inhibitor generation by tumor", 1, 10, (1,5))
+    g4 = st.slider("Inhibitor degradation by tumor", 1, 10, (1,5))
+    g5 = st.slider("Rate of NP binding", 1, 10, (1,5))
+    g6 = st.slider("Rate of NP degradation", 1, 10, (1,5))
 
-    c1 = st.slider("Auger effect", 1, 10, 1-5)
-    c2 = st.slider("Radiotherapy effect", 1, 10, 1-5)
+    c1 = st.slider("Auger effect", 1, 10, (1,5))
+    c2 = st.slider("Radiotherapy effect", 1, 10, (1,5))
 
     #Mathematical proportionality components
     s = 100
