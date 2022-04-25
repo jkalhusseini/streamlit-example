@@ -34,10 +34,12 @@ with st.echo(code_location='below'):
         ['g0', 'g1', 'g2', 'g3'])
     if options :
         if len(options) <= 2:
-            st.write(options)
+            st.write()
         else:
             st.warning("Please only select two variables")
 
+    y = 
+    z = 
     def TumorModel(dRp, Rp, c1, g5, g6, s, g1, Phi_i, Phi_n, ae, n_i, c2):
         dRp = (Rp/3)[[(c1(g5+g6)-s*g1)/15][Rp*Rp]+(s*Phi_i)-(s*Phi_n)-[(s*2*ae)/Rp]-c1(n_i)-c2]
         return dRp
