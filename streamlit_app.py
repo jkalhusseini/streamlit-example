@@ -3,6 +3,9 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
+import plotly.figure_factory as ff
+import plotly.graph_objects as go
+import numpy as np
 
 
 with st.echo(code_location='below'):
@@ -39,10 +42,22 @@ with st.echo(code_location='below'):
         y = [VarSelector1]
         z = [VarSelector2]
 
+    fig = go.Figure(data=[go.surface(x = dRp, y = [VarSelector1], z = [VarSelector2])])
+    st.plotly_chart
+
+            
+    #Create drop down menu to select variables 
     options = st.multiselect(
-     'Which sliders would you like to select',
+     'Which variables would you like to select?',
      ['Rate of nutrient consumption', 'Nutrient supply degradation (ext. inhibitor)', 'External inhibitor degradation', 'Inhibitor generation by tumor'],
      ['Rate of NP binding', 'Rate of NP degradation'])
+
+    #Limit to three variables 
+    if options :
+        if len(options) <= 3:
+            st.write(options)
+        else:
+            st.warning("Please only select three variables")
 
     st.write('You selected:', options)
     
