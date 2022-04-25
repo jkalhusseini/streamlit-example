@@ -4,6 +4,7 @@ import math
 import pandas as pd
 import streamlit as st
 import numpy as np
+import plotly.express as px
 
 
 with st.sidebar:
@@ -51,7 +52,7 @@ with st.echo(code_location='below'):
         dRp = (Rp/3)[[(c1(g5+g6)-s*g1)/15][Rp*Rp]+(s*Phi_i)-(s*Phi_n)-[(s*2*ae)/Rp]-c1(n_i)-c2]
         return dRp
 
-    import plotly.express as px
+
     fig = px.scatter_3d(x=g6, y=var1, z=var2, color="black", size="300", hover_name="dRp",
                   symbol="sphere", color_discrete_map = {"dRp": "teal", "var2": "pink", "var3":"orange"})
     st.write(fig)
