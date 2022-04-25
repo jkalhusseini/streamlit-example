@@ -6,8 +6,13 @@ import streamlit as st
 
 
 with st.echo(code_location='below'):
-    total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
-    num_turns = st.slider("Number of turns in spiral", 1, 100, 9)
+    g0 = st.slider("Rate of nutrient consumption", 1, 500, 250)
+    g1 = st.slider("Nutrient supply degradation (ext. inhibitor)", 1, 10, 5)
+    g2 = st.slider("External inhibitor degradation", 1, 10, 5)
+    g3 = st.slider("Inhibitor generation by tumor", 1, 10, 5)
+    g4 = st.slider("Inhibitor degradation by tumor", 1, 10, 5)
+    g5 = st.slider("Rate of NP binding", 1, 10, 5)
+    g6 = st.slider("Rate of NP degradation", 1, 10, 5)
 
     Point = namedtuple('Point', 'x y')
     data = []
