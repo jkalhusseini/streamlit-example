@@ -30,9 +30,9 @@ with st.echo(code_location='below'):
 
     #Create drop down menu to select variables 
     options = st.multiselect(
-     'Which variables would you like to select?',
-     ['g0', 'g1', 'g2', 'g3'],
-     ['g5', 'g6'])
+        'Which variables would you like to select?',
+        ['g0', 'g1', 'g2', 'g3'])
+     
 
     #Limit to three variables 
     if options :
@@ -62,6 +62,7 @@ import plotly.express as px
 import streamlit as st
 tumor = px.data.tumor()
 fig = px.scatter_3d(tumor, x="", y="", z="", color="", size="", hover_name="dRp",
-                  symbol="", color_discrete_map = {"": "blue", "": "green", "":"red"})
+                  symbol="", color_discrete_map = {"": "teal", "": "pink", "":"r"})
 st.write(fig)
+##create list of options and then assign each option to x, y, z? 
 """"""
