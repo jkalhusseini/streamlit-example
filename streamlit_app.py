@@ -1,6 +1,7 @@
 from collections import namedtuple
 import altair as alt
 import math
+from matplotlib.pyplot import plot
 from nbformat import write
 import pandas as pd
 import streamlit as st
@@ -34,7 +35,7 @@ with st.echo(code_location='below'):
     #Create drop down menu to select variables 
     options = st.multiselect(
         'Which variables would you like to select?',
-        ['g0', 'g1', 'g2', 'g3'])
+        ['g5', 'g6', 'c1', 'c2'])
     if options :
         if len(options) <= 2:
             st.write()
@@ -48,8 +49,11 @@ with st.echo(code_location='below'):
     var1 = options[0]
     var2 = options[1]
 
-    def TumorModel(dRp, Rp, c1, g5, g6, s, g1, Phi_i, Phi_n, ae, n_i, c2):
+    def TumorModel(Rp, c1, g5, g6, s, g1, Phi_i, Phi_n, ae, n_i, c2):
         dRp = (Rp/3)[[(c1(g5+g6)-s*g1)/15][Rp*Rp]+(s*Phi_i)-(s*Phi_n)-[(s*2*ae)/Rp]-c1(n_i)-c2]
         return dRp
+    
+    TumorModel(10, c1, g5, g6, s, g1, Phi_i, Phi_n, ae, n_i, c2)
 
+    fig = plot(x = dRp, y = var1, z = var2)
     st.fig(write)
