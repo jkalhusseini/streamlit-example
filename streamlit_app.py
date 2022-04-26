@@ -1,6 +1,7 @@
 from collections import namedtuple
 import altair as alt
 import math
+from nbformat import write
 import pandas as pd
 import streamlit as st
 import numpy as np
@@ -23,7 +24,7 @@ with st.sidebar:
     #Mathematical proportionality components
         s = 100
         ae = 0.2
-        Phi_i = 1
+        Phi_i = 1 
         Phi_n = 0.6
         n_i = 1
         
@@ -51,5 +52,4 @@ with st.echo(code_location='below'):
         dRp = (Rp/3)[[(c1(g5+g6)-s*g1)/15][Rp*Rp]+(s*Phi_i)-(s*Phi_n)-[(s*2*ae)/Rp]-c1(n_i)-c2]
         return dRp
 
-    fig = plt.figure()
-    ax = fig.gca(projection='3d')
+    st.fig(write)
