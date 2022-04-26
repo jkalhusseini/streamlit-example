@@ -1,7 +1,6 @@
 from collections import namedtuple
 import altair as alt
 import math
-from matplotlib.pyplot import plot
 from nbformat import write
 import pandas as pd
 import streamlit as st
