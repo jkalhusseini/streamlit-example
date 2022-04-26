@@ -5,8 +5,6 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 
-from mpl_toolkits.mplot3d import Axes3D
-
 
 with st.sidebar:
 
