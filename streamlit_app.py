@@ -53,13 +53,15 @@ def model(Rp, var1, var2):
     dRp = (Rp/3)*(((
         c1
     *(g5+g6)-s*g1)*(0.0666666))*(Rp*Rp)+(s*Phi_i)-(s*Phi_n)-((s*2*ae)/Rp)-c1*(n_i)-c2)
-    return dRp
+    return dRp 
+
 
     #Create drop down menu to select variables 
 options = st.multiselect(
         'Which variables would you like to select?',
         ['g5', 'g6', 'c1', 'c2'])
 st.write(options[0])
+
 if options :
         if len(options) > 2:
             st.warning("Too many variables")
@@ -72,6 +74,7 @@ if options :
             var1 = options[0]
             var2 = options[1]
             model(Rp, var1, var2)
+            options.append(dRp)
 
 #options = px.data.election()
 fig = px.scatter_3d(options, Rp, var1,var2, color="winner", size="total", hover_name="tumor growth rate",
@@ -80,8 +83,7 @@ st.write(fig)
         
 
 import time
-import numpy as np
-import skimage 
+import numpy as np 
 from skimage import io
 
 
