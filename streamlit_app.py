@@ -66,7 +66,7 @@ with col2:
 
     if st.button("Generate random parameters"):
         model(Rp, g1, c1, c2, g5, g6)
-        data.append(Rp, g1, c1, c2, g5, g6)
+        #data.append(Rp, g1, c1, c2, g5, g6)
 
 
 
