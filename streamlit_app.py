@@ -12,32 +12,33 @@ import time
 import numpy as np 
 from skimage import io
 import plotly.figure_factory as ff
+import pandas as pd
 
 
 col1, col2 = st.columns(2)
 
 data = pd.DataFrame
+with st.sidebar:
+    g0 = random.randint(1,500)
+    st.write(g0)
+    g1 = random.randint(1,500)
+    st.write(g1)
+    g2 = random.randint(1,500)
+    st.write(g2)
+    g3 = random.randint(1,500)
+    st.write(g3)
+    g4 = random.randint(1,500)
+    st.write(g4)
+    g5 = random.randint(1,500)
+    st.write(g5)
+    g6 = random.randint(1,500)
+    st.write(g6)
+        
 
-g0 = random.randint(1,500)
-st.write(g0)
-g1 = random.randint(1,500)
-st.write(g1)
-g2 = random.randint(1,500)
-st.write(g2)
-g3 = random.randint(1,500)
-st.write(g3)
-g4 = random.randint(1,500)
-st.write(g4)
-g5 = random.randint(1,500)
-st.write(g5)
-g6 = random.randint(1,500)
-st.write(g6)
-    
-
-c1 = random.randint(1,500)
-st.write(c1)
-c2 = random.randint(1,500)
-st.write(c2)
+    c1 = random.randint(1,500)
+    st.write(c1)
+    c2 = random.randint(1,500)
+    st.write(c2)
 
 
    #Mathematical proportionality components
@@ -66,7 +67,10 @@ with col2:
 
     if st.button("Generate random parameters"):
         model(Rp, g1, c1, c2, g5, g6)
-        #data.append(Rp, g1, c1, c2, g5, g6)
+        df2 = {'g0: 1', 'g1:2'}
+        data = data.append(df2, ignore_index=True)
+
+        data
 
 
 
@@ -134,8 +138,8 @@ st.write(fig)
     # Layout
     fig.update_layout(
             title='Volumetric MRI',
-            width=600,
-            height=600,
+            width=200,
+            height=200,
             scene=dict(
                         zaxis=dict(range=[-0.1, 6.8], autorange=False),
                         aspectratio=dict(x=1, y=1, z=1),
