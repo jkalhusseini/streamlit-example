@@ -5,8 +5,8 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 from scipy.integrate import odeint
-from matplotlib import pyplot as plt
-
+from matplotlib import image, pyplot as plt
+import plotly.express as px
 
 
 
@@ -73,13 +73,17 @@ if options :
             var2 = options[1]
             model(Rp, var1, var2)
 
-
+#options = px.data.election()
+fig = px.scatter_3d(options, x=Rp, y=var1, z=var2, color="winner", size="total", hover_name="tumor growth rate",
+                  symbol="result", color_discrete_map = {Rp: "blue", var1: "green", var2:"red"})
+st.write(fig)
         
 
 import time
 import numpy as np
-
+import skimage 
 from skimage import io
+
 
 vol = io.imread("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/attention-mri.tif")
 volume = vol.T
