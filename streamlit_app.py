@@ -7,13 +7,13 @@ import numpy as np
 from scipy.integrate import odeint
 from matplotlib import image, pyplot as plt
 import plotly.express as px
-
+import random
 
 
 
 with st.sidebar:
 
-    g0 = st.slider("Rate of nutrient consumption", 1, 500)
+    """g0 = st.slider("Rate of nutrient consumption", 1, 500)
     g1 = st.slider("Nutrient supply degradation (ext. inhibitor)", 1, 10)
     g2 = st.slider("External inhibitor degradation", 1, 10)
     g3 = st.slider("Inhibitor generation by tumor", 1, 10)
@@ -24,6 +24,21 @@ with st.sidebar:
 
     c1 = st.slider("Auger effect", 1, 10)
     c2 = st.slider("Radiotherapy effect", 1, 10)
+    """
+
+    g0 = random.randint(1,500)
+    g1 = random.randint(1,500)
+    g2 = random.randint(1,500)
+    g3 = random.randint(1,500)
+    g4 = random.randint(1,500)
+    g5 = random.randint(1,500)
+    g6 = random.randint(1,500)
+    
+
+    c1 = st.slider("Auger effect", 1, 10)
+    c2 = st.slider("Radiotherapy effect", 1, 10)
+
+
 
     #Mathematical proportionality components
     s = 100
