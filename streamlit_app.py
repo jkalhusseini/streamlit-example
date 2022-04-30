@@ -130,8 +130,8 @@ n_i = 1
 Rp = 1
 
 with st.sidebar:
-    write(g0)
-    write(g1)
+    print(g0)
+    print(g1)
 
 def model(Rp, g1, c1, c2, g5, g6):
     s = 100
