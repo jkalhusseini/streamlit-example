@@ -101,32 +101,37 @@ fig.update_layout(
 
 fig.show()
 
+
+
+
+
 data = pd.DataFrame
 
-
-with st.sidebar:
-
-    g0 = random.randint(1,500)
-    g1 = random.randint(1,500)
-    g2 = random.randint(1,500)
-    g3 = random.randint(1,500)
-    g4 = random.randint(1,500)
-    g5 = random.randint(1,500)
-    g6 = random.randint(1,500)
+g0 = random.randint(1,500)
+g1 = random.randint(1,500)
+g2 = random.randint(1,500)
+g3 = random.randint(1,500)
+g4 = random.randint(1,500)
+g5 = random.randint(1,500)
+g6 = random.randint(1,500)
     
 
-    c1 = random.randint(1,500)
-    c2 = random.randint(1,500)
+c1 = random.randint(1,500)
+c2 = random.randint(1,500)
 
 
-    #Mathematical proportionality components
-    s = 100
-    ae = 0.2
-    Phi_i = 1 
-    Phi_n = 0.6
-    n_i = 1
-    Rp = 1
+   #Mathematical proportionality components
+s = 100
+ae = 0.2
+Phi_i = 1 
+Phi_n = 0.6
+n_i = 1
+Rp = 1
 
+with st.sidebar:
+    write(g0)
+    write(g1)
+    
 def model(Rp, g1, c1, c2, g5, g6):
     s = 100
     ae = 0.2
