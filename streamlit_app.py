@@ -69,6 +69,7 @@ sliders = [
 # Layout
 fig.update_layout(
          title='Slices in volumetric data',
+         x = 500,
          width=600,
          height=600,
          scene=dict(
@@ -131,7 +132,7 @@ Rp = 1
 with st.sidebar:
     write(g0)
     write(g1)
-    
+
 def model(Rp, g1, c1, c2, g5, g6):
     s = 100
     ae = 0.2
