@@ -43,7 +43,7 @@ def model(Rp, var1, var2):
     dRp = (Rp/3)*(((
         c1
     *(g5+g6)-s*g1)*(0.0666666))*(Rp*Rp)+(s*Phi_i)-(s*Phi_n)-((s*2*ae)/Rp)-c1*(n_i)-c2)
-    return dRp 
+    #return dRp 
 
 
     #Create drop down menu to select variables 
