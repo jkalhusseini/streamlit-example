@@ -69,7 +69,6 @@ sliders = [
 # Layout
 fig.update_layout(
          title='Slices in volumetric data',
-         x = 500,
          width=600,
          height=600,
          scene=dict(
