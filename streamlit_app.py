@@ -75,18 +75,4 @@ if options :
 
 
         
-"""    Rp0 = [0,50,100]
-    t = np.linspace(0,20,200)
-    result = odeint(model, Rp0, t, args=(var2,))
 
-    fig,ax = plt.subplots()
-    ax.plot(t,result[:,0],label='R0=0')
-    ax.plot(t,result[:,1],label='R0=0.3')
-    ax.plot(t,result[:,2],label='R0=1')
-    
-    
-    def TumorModel(Rp, c1, g5, g6, s, g1, Phi_i, Phi_n, ae, n_i, c2):
-            dRp = (Rp/3)[[(c1(g5+g6)-s*g1)/15][Rp*Rp]+(s*Phi_i)-(s*Phi_n)-[(s*2*ae)/Rp]-c1(n_i)-c2]
-            return dRp
-    
-    TumorModel(10, c1, g5, g6, s, g1, Phi_i, Phi_n, ae, n_i, c2)"""
