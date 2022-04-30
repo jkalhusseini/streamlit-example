@@ -32,7 +32,7 @@ with st.sidebar:
     g6 = st.slider("Rate of NP degradation", 1, 10)
     
 
-    c1 = st.slider("Auger effect", 1, 10, (1,5))
+    c1 = st.slider("Auger effect", 1, 10)
     c2 = st.slider("Radiotherapy effect", 1, 10)
 
     #Mathematical proportionality components
