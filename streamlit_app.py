@@ -74,7 +74,7 @@ if options :
             model(Rp, var1, var2)
 
 #options = px.data.election()
-fig = px.scatter_3d(options, x=Rp, y=var1, z=var2, color="winner", size="total", hover_name="tumor growth rate",
+fig = px.scatter_3d(options, Rp, var1,var2, color="winner", size="total", hover_name="tumor growth rate",
                   symbol="result", color_discrete_map = {Rp: "blue", var1: "green", var2:"red"})
 st.write(fig)
         
