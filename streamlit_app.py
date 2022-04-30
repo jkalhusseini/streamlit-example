@@ -11,6 +11,7 @@ import random
 import time
 import numpy as np 
 from skimage import io
+import plotly.figure_factory as ff
 
 
 vol = io.imread("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/attention-mri.tif")
@@ -100,6 +101,9 @@ fig.update_layout(
 
 fig.show()
 
+data = pd.DataFrame
+
+
 with st.sidebar:
 
     g0 = random.randint(1,500)
@@ -123,7 +127,7 @@ with st.sidebar:
     n_i = 1
     Rp = 1
 
-def model(Rp, var1, var2):
+def model(Rp, g1, c1, c2, g5, g6):
     s = 100
     ae = 0.2
     Phi_i = 1 
@@ -133,7 +137,14 @@ def model(Rp, var1, var2):
     dRp = (Rp/3)*(((
         c1
     *(g5+g6)-s*g1)*(0.0666666))*(Rp*Rp)+(s*Phi_i)-(s*Phi_n)-((s*2*ae)/Rp)-c1*(n_i)-c2)
-    #return dRp 
+    return dRp 
+
+if st.button("Generate random parameters"):
+    model(Rp, g1, c1, c2, g5, g6)
+    
+
+fig = ff.create_scatterplotmatrix(data, diag='histogram', index='Species',
+                                  height=800, width=800)
 
 
 #options = px.data.election()
