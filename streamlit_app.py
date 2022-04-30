@@ -19,16 +19,25 @@ col1, col2 = st.columns(2)
 data = pd.DataFrame
 
 g0 = random.randint(1,500)
+print(g0)
 g1 = random.randint(1,500)
+print(g1)
 g2 = random.randint(1,500)
+print(g2)
 g3 = random.randint(1,500)
+print(g3)
 g4 = random.randint(1,500)
+print(g4)
 g5 = random.randint(1,500)
+print(g5)
 g6 = random.randint(1,500)
+print(g6)
     
 
 c1 = random.randint(1,500)
+print(c1)
 c2 = random.randint(1,500)
+print(c2)
 
 
    #Mathematical proportionality components
@@ -57,6 +66,8 @@ with col2:
 
     if st.button("Generate random parameters"):
         model(Rp, g1, c1, c2, g5, g6)
+        data.append(Rp, g1, c1, c2, g5, g6)
+
 
 
 
