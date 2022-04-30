@@ -61,13 +61,17 @@ if options :
             #list_options.append(options)
         #st.write('You selected:', options)
         else:
+            new_list = []
             var1 = options[0]
+            new_list.append(var1)
             var2 = options[1]
+            new_list.append(var2)
             model(Rp, var1, var2)
-            options.append(dRp)
+            dRp = 0
+            new_list.append(dRp)
 
 #options = px.data.election()
-fig = px.scatter_3d(options, Rp, var1,var2, color="winner", size="total", hover_name="tumor growth rate",
+fig = px.scatter_3d(new_list, dRp, var1,var2, color="winner", size="total", hover_name="tumor growth rate",
                   symbol="result", color_discrete_map = {Rp: "blue", var1: "green", var2:"red"})
 st.write(fig)
         
