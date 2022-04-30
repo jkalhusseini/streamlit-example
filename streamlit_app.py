@@ -58,7 +58,7 @@ def model(Rp, g1, c1, c2, g5, g6):
     dRp = (Rp/3)*(((
         c1
     *(g5+g6)-s*g1)*(0.0666666))*(Rp*Rp)+(s*Phi_i)-(s*Phi_n)-((s*2*ae)/Rp)-c1*(n_i)-c2)
-    return dRp 
+    st.write(dRp)
 
 with col2:
     print(g0)
