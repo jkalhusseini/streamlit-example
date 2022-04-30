@@ -68,7 +68,7 @@ with col2:
     if st.button("Generate random parameters"):
         model(Rp, g1, c1, c2, g5, g6)
         df2 = {'g0': '1', 'g1':'2'}
-        data = data.append(df2, ignore_index=True)
+        data = data.append(df2)
 
         data
 
