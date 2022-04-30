@@ -34,7 +34,7 @@ fig = go.Figure(frames=[go.Frame(data=go.Surface(
 fig.add_trace(go.Surface(
     z=6.7 * np.ones((r, c)),
     surfacecolor=np.flipud(volume[67]),
-    colorscale='Gray',
+    colorscale='blue',
     cmin=0, cmax=200,
     colorbar=dict(thickness=20, ticklen=4)
     ))
