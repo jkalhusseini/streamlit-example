@@ -13,7 +13,10 @@ import numpy as np
 from skimage import io
 import plotly.figure_factory as ff
 
-with st.container():
+
+col1, col2 = st.columns(2)
+
+with col1:
     vol = io.imread("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/attention-mri.tif")
     volume = vol.T
     r, c = volume[0].shape
@@ -128,10 +131,6 @@ Phi_n = 0.6
 n_i = 1
 Rp = 1
 
-with st.sidebar:
-    print(g0)
-    print(g1)
-
 def model(Rp, g1, c1, c2, g5, g6):
     s = 100
     ae = 0.2
@@ -144,16 +143,19 @@ def model(Rp, g1, c1, c2, g5, g6):
     *(g5+g6)-s*g1)*(0.0666666))*(Rp*Rp)+(s*Phi_i)-(s*Phi_n)-((s*2*ae)/Rp)-c1*(n_i)-c2)
     return dRp 
 
-if st.button("Generate random parameters"):
-    model(Rp, g1, c1, c2, g5, g6)
+with col2:
+    print(g0)
+    print(g1)
+
+    if st.button("Generate random parameters"):
+        model(Rp, g1, c1, c2, g5, g6)
+
+
+
     
 
 fig = ff.create_scatterplotmatrix(data, diag='histogram', index='Species',
                                   height=800, width=800)
 
-
-#options = px.data.election()
-fig = px.scatter_3d(new_list, dRp, var1,var2, color="winner", size="total", hover_name="tumor growth rate",
-                  symbol="result", color_discrete_map = {Rp: "blue", var1: "green", var2:"red"})
 st.write(fig)
         
