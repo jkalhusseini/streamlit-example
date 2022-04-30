@@ -62,19 +62,16 @@ options = st.multiselect(
 st.write(options[0])
 if options :
         if len(options) > 2:
-            st.warning("Please only select two variables")
+            st.warning("Too many variables")
+        elif len(options) < 2:
+            st.warning("Too few variables")
             #list_options = []
             #list_options.append(options)
         #st.write('You selected:', options)
         else:
-
-    #Establishing user's first and second variables, to be used in 3D scatter plot
-            st.write(options)
             var1 = options[0]
             var2 = options[1]
-
-
-        model(Rp, var1, var2)
+            model(Rp, var1, var2)
 
 
         
