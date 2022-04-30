@@ -19,25 +19,25 @@ col1, col2 = st.columns(2)
 data = pd.DataFrame
 
 g0 = random.randint(1,500)
-print(g0)
+st.write(g0)
 g1 = random.randint(1,500)
-print(g1)
+st.write(g1)
 g2 = random.randint(1,500)
-print(g2)
+st.write(g2)
 g3 = random.randint(1,500)
-print(g3)
+st.write(g3)
 g4 = random.randint(1,500)
-print(g4)
+st.write(g4)
 g5 = random.randint(1,500)
-print(g5)
+st.write(g5)
 g6 = random.randint(1,500)
-print(g6)
+st.write(g6)
     
 
 c1 = random.randint(1,500)
-print(c1)
+st.write(c1)
 c2 = random.randint(1,500)
-print(c2)
+st.write(c2)
 
 
    #Mathematical proportionality components
