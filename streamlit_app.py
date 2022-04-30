@@ -159,7 +159,7 @@ fig = ff.create_scatterplotmatrix(data, diag='histogram', index='Species',
 
 st.write(fig)
         
-with col1:
+"""with col1:
     vol = io.imread("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/attention-mri.tif")
     volume = vol.T
     r, c = volume[0].shape
@@ -214,7 +214,7 @@ with col1:
 
     # Layout
     fig.update_layout(
-            title='Slices in volumetric data',
+            title='Volumetric MRI',
             width=600,
             height=600,
             scene=dict(
@@ -245,5 +245,5 @@ with col1:
             sliders=sliders
     )
 
-    fig.show()
+    fig.show()"""
 
