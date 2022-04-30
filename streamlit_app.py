@@ -35,9 +35,8 @@ with st.sidebar:
     g6 = random.randint(1,500)
     
 
-    c1 = st.slider("Auger effect", 1, 10)
-    c2 = st.slider("Radiotherapy effect", 1, 10)
-
+    c1 = random.randint(1,500)
+    c2 = random.randint(1,500)
 
 
     #Mathematical proportionality components
