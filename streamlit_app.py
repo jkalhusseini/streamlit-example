@@ -63,7 +63,7 @@ if options :
         else:
             var1 = options[0]
             var2 = options[1]
-            model(dRp, var1, var2)
+            model(Rp, var1, var2)
             options.append(dRp)
 
 #options = px.data.election()
