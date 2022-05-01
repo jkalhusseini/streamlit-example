@@ -16,7 +16,16 @@ import pandas as pd
 from IPython.display import display
 import ggseg
 
-ggseg.plot_dk(data, cmap='Spectral', figsize=(15,15),
+datab = {'Left-Lateral-Ventricle': 12289.6,
+        'Left-Thalamus': 8158.3,
+        'Left-Caudate': 3463.3,
+        'Left-Putamen': 4265.3,
+        'Left-Pallidum': 1620.9,
+        '3rd-Ventricle': 1635.6,
+        '4th-Ventricle': 1115.6,
+        }
+        
+ggseg.plot_dk(datab, cmap='Spectral', figsize=(15,15),
               background='k', edgecolor='w', bordercolor='gray',
               ylabel='Cortical thickness (mm)', title='Title of the figure')
 
