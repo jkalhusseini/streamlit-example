@@ -62,15 +62,11 @@ def model(Rp, g1, c1, c2, g5, g6):
     st.write(dRp)
 
 with col2:
-    print(g0)
-    print(g1)
-
     if st.button("Generate random parameters"):
         model(Rp, g1, c1, c2, g5, g6)
         df2 = {'g0': '1', 'g1':'2'}
         data = data.append(df2)
 
-        data
 
 
 
