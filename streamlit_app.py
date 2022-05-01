@@ -60,12 +60,15 @@ def model(Rp, g1, c1, c2, g5, g6):
         c1
     *(g5+g6)-s*g1)*(0.0666666))*(Rp*Rp)+(s*Phi_i)-(s*Phi_n)-((s*2*ae)/Rp)-c1*(n_i)-c2)
     st.write(dRp)
+    data.append()
 
 with col2:
     if st.button("Generate random parameters"):
         model(Rp, g1, c1, c2, g5, g6)
+        
+        """data.append()
         df2 = {'g0': '1', 'g1':'2'}
-        data = data.append(df2)
+        data = data.append(df2)"""
 
 
 
