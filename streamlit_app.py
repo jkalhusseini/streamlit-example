@@ -13,11 +13,12 @@ import numpy as np
 from skimage import io
 import plotly.figure_factory as ff
 import pandas as pd
+from IPython.display import display
 
 
 
 data = pd.DataFrame
-with st.container:
+with st.sidebar:
     g0 = random.randint(1,500)
     st.write(g0)
     g1 = random.randint(1,500)
@@ -32,6 +33,7 @@ with st.container:
     st.write(g5)
     g6 = random.randint(1,500)
     st.write(g6)
+
         
 
     c1 = random.randint(1,500)
@@ -61,13 +63,13 @@ def model(Rp, g1, c1, c2, g5, g6):
     st.write(dRp)
     data.append()
 
-with st.container:
-    if st.button("Generate random parameters"):
-        model(Rp, g1, c1, c2, g5, g6)
-        
-        """data.append()
-        df2 = {'g0': '1', 'g1':'2'}
-        data = data.append(df2)"""
+
+if st.button("Generate random parameters"):
+    model(Rp, g1, c1, c2, g5, g6)
+    display(model())
+    """data.append()
+    df2 = {'g0': '1', 'g1':'2'}
+    data = data.append(df2)"""
 
 
 
