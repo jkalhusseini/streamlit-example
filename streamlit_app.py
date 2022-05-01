@@ -80,7 +80,7 @@ fig = ff.create_scatterplotmatrix(data, diag='histogram', index='Species',
 
 st.write(fig)
 
-with st.container:
+"""with st.container:
 
     vol = io.imread("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/attention-mri.tif")
     volume = vol.T
@@ -169,3 +169,4 @@ with st.container:
 
     fig.show()
 
+"""
