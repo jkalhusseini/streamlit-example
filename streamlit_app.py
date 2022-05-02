@@ -141,50 +141,11 @@ with st.sidebar:
 
 st.subheader("Scatterplot Matrix Comparing Individual Parameters:")
 
-fig2 = px.scatter_matrix(data)
-
+#Figure call for scatterplot matrix
 fig1 = ff.create_scatterplotmatrix(data, diag='histogram', title= "",
                                   height=800, width=900)
-
-options_2 = []
-
-#nps = st.checkbox("NP Binding")
-#if nps:
- #   options_2.append("NP Binding")
-
-#options = st.multiselect(
- #    'Please select three variables',
-  #   (['Inhibitor Degeneration', 
-   #             'NP Binding', 'Auger Effect', 'Radiotherapy Factor', 'Growth rate']))
-
-#inde = st.checkbox('Inhibitor Degeneration')
-#if inde:
-#    options_2.append('Inhibitor Degeneration')
-
-#ar = st.checkbox('Auger Effect')
-#if ar:
-#    options_2.append('Auger Effect')
-
-#rf = st.checkbox('Radiotherapy Factor')
-#if rf:
-#    options_2.append('Radiotherapy Factor')
-    
-#gr = st.checkbox("Growth rate")
-#if gr:
-#    options_2.append('Growth rate')
-
-
-#st.write('You selected:', options_2)
-
-#fig3 = px.scatter_3d(data, x = "NP Binding", y = "Auger Effect", z = "Growth rate")
-#######fig4 = px.scatter_3d(data, x = options_2[0], y = options_2[1], z = options_2[2])
-#fig5 = px.scatter_3d(data, x = "Growth rate", y = "Inhibitor Degeneration", z = "NP Binding")
+#Streamlit write figure
 st.write(fig1)
-#with col1:
-#    st.write(fig3)
-#with col2:
-####st.write(fig4)
-#    st.write(fig5)
 
 
 #Subheader for MRI volumes
@@ -218,6 +179,10 @@ fig.add_trace(go.Surface(
 
 
 def frame_args(duration):
+    """
+    def frame_args takes duration as a parameter and controls the time interval for the MRI cross section
+    duration(int): slides/sec
+    """
     return {
             "frame": {"duration": duration},
             "mode": "immediate",
