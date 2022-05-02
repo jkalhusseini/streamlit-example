@@ -14,20 +14,12 @@ from skimage import io
 import plotly.figure_factory as ff
 import pandas as pd
 from IPython.display import display
-import ggseg
+from PIL import Image
 
-datab = {'Left-Lateral-Ventricle': 12289.6,
-        'Left-Thalamus': 8158.3,
-        'Left-Caudate': 3463.3,
-        'Left-Putamen': 4265.3,
-        'Left-Pallidum': 1620.9,
-        '3rd-Ventricle': 1635.6,
-        '4th-Ventricle': 1115.6,
-        }
-        
-ggseg.plot_dk(datab, cmap='Spectral', figsize=(15,15),
-              background='k', edgecolor='w', bordercolor='gray',
-              ylabel='Cortical thickness (mm)', title='Title of the figure')
+st.title("Modeling Tumor Growth and the Impact of Nanoparticle-Emitters in Adjuvant Radiotherapy")
+st.subheader("Tumor Model ODE:")
+image = Image.open('/Users/jacobalhusseini/Desktop/Screen Shot 2022-05-01 at 3.11.50 PM.png')
+st.image(image, caption = "ODE for outer tumor radius with respect to uniform growth condition.") 
 
    #Mathematical proportionality components
 s = 100
@@ -51,88 +43,96 @@ def model(Rp, g1, c1, c2, g5, g6):
 
 lol = []
 
-if st.button("Generate random parameters"):
-    for i in range (100):
-        g0 = random.randint(1,500)
-        g1 = random.randint(1,500)
-        g2 = random.randint(1,500)
-        g3 = random.randint(1,500)
-        g4 = random.randint(1,500)
-        g5 = random.randint(1,500)
-        g6 = random.randint(1,500)
-        c1 = random.randint(1,500)
-        c2 = random.randint(1,500)
-
-        model_output = model(Rp, g1, c1, c2, g5, g6)
-        lol.append([g1, g5, g6, c1, c2, model_output])
-
-        def convert_df(df):
-            return df.to_csv().encode('utf-8')
-        data = pd.DataFrame(lol)
-        csv = convert_df(data)
-
-else:
-    st.write("Check the box to begin simulation")
-    
-    with st.sidebar:
-
-        st.header("Clinical parameters:")
-    
-        st.write("Rate of nutrient consumption:")
-        
-        st.write("Nutrient supply degradation:")
-        
-        st.write("External inhibitor degradation:")
-        
-        st.write("Inhibitor generation by tumor:")
-        
-        st.write("Inhibitor degeneration by tumor:")
-        
-        st.write("Rate of nanoparticle binding:")
-        
-        st.write("Rate of nanoparticle degradation:")
-        
-        st.write("Auger effect")
-        
-        st.write("Radiotherapy factor:")
-
-        st.write("Output:")
-    
 with st.sidebar:
-    
-    st.header("Clinical parameters:")
+    st.subheader("Run Simulation:")
+    if st.button("Generate random parameters"):
+        for i in range (100):
+            g0 = random.randint(1,5000)
+            g1 = random.randint(1,5000)
+            g2 = random.randint(1,5000)
+            g3 = random.randint(1,5000)
+            g4 = random.randint(1,5000)
+            g5 = random.randint(1,5000)
+            g6 = random.randint(1,5000)
+            c1 = random.randint(1,5000)
+            c2 = random.randint(1,5000)
 
-    st.write("Rate of nutrient consumption:",g0)
-    
-    st.write("Nutrient supply degradation:", g1)
-    
-    st.write("External inhibitor degradation:", g2)
-    
-    st.write("Inhibitor generation by tumor:", g3)
-    
-    st.write("Inhibitor degeneration by tumor:", g4)
-    
-    st.write("Rate of nanoparticle binding:", g5)
-    
-    st.write("Rate of nanoparticle degradation:", g6)
-    
-    st.write("Auger effect", c1)
-    
-    st.write("Radiotherapy factor:", c2)
-
-    st.header("Growth rate:")
-    st.write("Output:", model_output)
-
-    st.download_button(label = "Click to download dataset (.CSV)",
-    file_name= "Dataset.csv", data=csv, mime = "text/csv")
+            model_output = model(Rp, g1, c1, c2, g5, g6)
+            lol.append([g0, g1, g4, g5, g6, c1, c2, model_output])
 
 
+            def convert_df(df):
+                return df.to_csv().encode('utf-8')
+            data = pd.DataFrame(lol)
+            csv = convert_df(data)
 
-fig1 = ff.create_scatterplotmatrix(data, diag='histogram',
-                                  height=800, width=800)
+        
+            data = data.rename(columns={"0":"Nutrient Consumption", "1":"Nutrient Degradation", "2":"Tumor Inhibitor", "3":"Inhibitor Degeneration", 
+                "4":"NP Binding", "5":"Auger Effect", "6":"Radiotherapy Factor", "7":"Growth rate"})
+    else:
+        
+        with st.sidebar:
+
+            st.header("Clinical parameters:")
+        
+            st.write("Rate of nutrient consumption:")
+            
+            st.write("Nutrient supply degradation:")
+            
+            st.write("External inhibitor degradation:")
+            
+            st.write("Inhibitor generation by tumor:")
+            
+            st.write("Inhibitor degeneration by tumor:")
+            
+            st.write("Rate of nanoparticle binding:")
+            
+            st.write("Rate of nanoparticle degradation:")
+            
+            st.write("Auger effect")
+            
+            st.write("Radiotherapy factor:")
+
+            st.write("Output:")
+        
+    with st.sidebar:
+        
+        st.header("Clinical parameters:")
+
+        st.write("Rate of nutrient consumption:",g0)
+        
+        st.write("Nutrient supply degradation:", g1)
+        
+        st.write("External inhibitor degradation:", g2)
+        
+        st.write("Inhibitor generation by tumor:", g3)
+        
+        st.write("Inhibitor degeneration by tumor:", g4)
+        
+        st.write("Rate of nanoparticle binding:", g5)
+        
+        st.write("Rate of nanoparticle degradation:", g6)
+        
+        st.write("Auger effect", c1)
+        
+        st.write("Radiotherapy factor:", c2)
+
+        st.header("Growth rate:")
+        st.write("Output:", model_output)
+
+        st.download_button(label = "Click to download dataset (.CSV)",
+        file_name= "Dataset.csv", data=csv, mime = "text/csv")
+
+st.subheader("Scatterplot Matrix Comparing Individual Parameters:")
+
+fig2 = px.scatter_matrix(data)
+#dimensions= (["Rate of Nutrient Consumption", "Inhibitor Degeneration", "NP Binding", "Auger Effect", "Radiotherapy", "Growth rate"])
+fig1 = ff.create_scatterplotmatrix(data, diag='histogram', title= "",
+                                  height=800, width=900)
 
 st.write(fig1)
 
+st.subheader("Volumetric MRI Analysis and Relevant Voxel Signals:")
 
 vol = io.imread("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/attention-mri.tif")
 volume = vol.T
@@ -140,7 +140,7 @@ r, c = volume[0].shape
 
 # Define frames
 import plotly.graph_objects as go
-nb_frames = 100
+nb_frames = 60
 
 fig = go.Figure(frames=[go.Frame(data=go.Surface(
     z=(6.7 - k * 0.1) * np.ones((r, c)),
@@ -188,7 +188,7 @@ sliders = [
 
 # Layout
 fig.update_layout(
-        title='Volumetric MRI',
+        title='',
         width=600,
         height=600,
         scene=dict(
