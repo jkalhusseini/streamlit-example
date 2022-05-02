@@ -23,7 +23,7 @@ st.title("Modeling Tumor Growth and the Impact of Nanoparticle-Emitters in Adjuv
 st.subheader("Tumor Model ODE:")
 
 #ODE Image
-image = Image.open('/Users/jacobalhusseini/Desktop/Screen Shot 2022-05-01 at 3.11.50 PM.png')
+image = Image.open('Screen Shot 2022-05-01 at 3.11.50 PM.png')
 st.image(image, caption = "ODE for outer tumor radius with respect to uniform growth condition.") 
 
 #Mathematical proportionality components
@@ -63,7 +63,7 @@ lol = []
 with st.sidebar:
 
     #Logo image
-    image2 = Image.open('/Users/jacobalhusseini/Downloads/cosmos-atom-logo.png')
+    image2 = Image.open('cosmos-atom-logo.png')
     st.image(image2, width= 150)
 
     #Run simulation subhead
