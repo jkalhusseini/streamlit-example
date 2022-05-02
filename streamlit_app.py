@@ -16,12 +16,17 @@ import pandas as pd
 from IPython.display import display
 from PIL import Image
 
+#Page Title
 st.title("Modeling Tumor Growth and the Impact of Nanoparticle-Emitters in Adjuvant Radiotherapy")
+
+#ODE Title
 st.subheader("Tumor Model ODE:")
+
+#ODE Image
 image = Image.open('/Users/jacobalhusseini/Desktop/Screen Shot 2022-05-01 at 3.11.50 PM.png')
 st.image(image, caption = "ODE for outer tumor radius with respect to uniform growth condition.") 
 
-   #Mathematical proportionality components
+#Mathematical proportionality components
 s = 100
 ae = 0.2
 Phi_i = 1 
@@ -29,7 +34,17 @@ Phi_n = 0.6
 n_i = 1
 Rp = 1
 
+#Defining solvable ODE
 def model(Rp, g1, c1, c2, g5, g6):
+    """
+    def model takes Rp, g1, c1, c2, g5, and g6 as parameters, and calculates dRp (change in tumor growth rate)
+    Rp(int): proliferative radius
+    g1(int): nutrient supply degradation
+    c1(int): Auger effect
+    c2(int): Radiotherapy factor
+    g5(int): Rate of nanoparticle binding
+    g6(int): Rate of nanoparticle degradation
+    """
     s = 100
     ae = 0.2
     Phi_i = 1 
@@ -41,11 +56,23 @@ def model(Rp, g1, c1, c2, g5, g6):
     *(g5+g6)-s*g1)*(0.0666666))*(Rp*Rp)+(s*Phi_i)-(s*Phi_n)-((s*2*ae)/Rp)-c1*(n_i)-c2)
     return dRp
 
+#Empty list of lists to be populated with random parameter values
 lol = []
 
+#Sidebar initiation
 with st.sidebar:
+
+    #Logo image
+    image2 = Image.open('/Users/jacobalhusseini/Downloads/cosmos-atom-logo.png')
+    st.image(image2, width= 150)
+
+    #Run simulation subhead
     st.subheader("Run Simulation:")
+
+    #Button initiation
     if st.button("Generate random parameters"):
+        
+        #Generation of 100 random values for each parameter
         for i in range (100):
             g0 = random.randint(1,5000)
             g1 = random.randint(1,5000)
@@ -57,82 +84,111 @@ with st.sidebar:
             c1 = random.randint(1,5000)
             c2 = random.randint(1,5000)
 
+            #Call to ODE
             model_output = model(Rp, g1, c1, c2, g5, g6)
-            lol.append([g0, g1, g4, g5, g6, c1, c2, model_output])
 
+            #Appending generated values to empty list (lol)
+            lol.append([ g5, g6, c1, c2, model_output])
 
+            #Function to convert datagrame to .csv
             def convert_df(df):
+                """
+                def convert_df converts pandas dataframe to a csv file
+                df: pandas dataframe 
+                """
                 return df.to_csv().encode('utf-8')
+            
+            #Converting lol into pd.DataFrame
             data = pd.DataFrame(lol)
             csv = convert_df(data)
 
-        
-            data = data.rename(columns={"0":"Nutrient Consumption", "1":"Nutrient Degradation", "2":"Tumor Inhibitor", "3":"Inhibitor Degeneration", 
-                "4":"NP Binding", "5":"Auger Effect", "6":"Radiotherapy Factor", "7":"Growth rate"})
+            #Renaming columns of df
+            data.columns= ['Inhibitor Degeneration', 
+                "NP Binding", "Auger Effect", "Radiotherapy Factor", "Growth rate"]
+
+    #Presents empty variables when simulation not yet run
     else:
-        
         with st.sidebar:
-
             st.header("Clinical parameters:")
-        
             st.write("Rate of nutrient consumption:")
-            
             st.write("Nutrient supply degradation:")
-            
             st.write("External inhibitor degradation:")
-            
             st.write("Inhibitor generation by tumor:")
-            
             st.write("Inhibitor degeneration by tumor:")
-            
             st.write("Rate of nanoparticle binding:")
-            
             st.write("Rate of nanoparticle degradation:")
-            
             st.write("Auger effect")
-            
             st.write("Radiotherapy factor:")
-
             st.write("Output:")
         
     with st.sidebar:
-        
         st.header("Clinical parameters:")
-
         st.write("Rate of nutrient consumption:",g0)
-        
         st.write("Nutrient supply degradation:", g1)
-        
         st.write("External inhibitor degradation:", g2)
-        
         st.write("Inhibitor generation by tumor:", g3)
-        
         st.write("Inhibitor degeneration by tumor:", g4)
-        
         st.write("Rate of nanoparticle binding:", g5)
-        
         st.write("Rate of nanoparticle degradation:", g6)
-        
         st.write("Auger effect", c1)
-        
         st.write("Radiotherapy factor:", c2)
-
         st.header("Growth rate:")
         st.write("Output:", model_output)
 
+        #Download button for .csv of output data
         st.download_button(label = "Click to download dataset (.CSV)",
         file_name= "Dataset.csv", data=csv, mime = "text/csv")
 
 st.subheader("Scatterplot Matrix Comparing Individual Parameters:")
 
 fig2 = px.scatter_matrix(data)
-#dimensions= (["Rate of Nutrient Consumption", "Inhibitor Degeneration", "NP Binding", "Auger Effect", "Radiotherapy", "Growth rate"])
+
 fig1 = ff.create_scatterplotmatrix(data, diag='histogram', title= "",
                                   height=800, width=900)
 
-st.write(fig1)
+options_2 = []
 
-st.subheader("Volumetric MRI Analysis and Relevant Voxel Signals:")
+#nps = st.checkbox("NP Binding")
+#if nps:
+ #   options_2.append("NP Binding")
+
+#options = st.multiselect(
+ #    'Please select three variables',
+  #   (['Inhibitor Degeneration', 
+   #             'NP Binding', 'Auger Effect', 'Radiotherapy Factor', 'Growth rate']))
+
+#inde = st.checkbox('Inhibitor Degeneration')
+#if inde:
+#    options_2.append('Inhibitor Degeneration')
+
+#ar = st.checkbox('Auger Effect')
+#if ar:
+#    options_2.append('Auger Effect')
+
+#rf = st.checkbox('Radiotherapy Factor')
+#if rf:
+#    options_2.append('Radiotherapy Factor')
+    
+#gr = st.checkbox("Growth rate")
+#if gr:
+#    options_2.append('Growth rate')
+
+
+#st.write('You selected:', options_2)
+
+#fig3 = px.scatter_3d(data, x = "NP Binding", y = "Auger Effect", z = "Growth rate")
+#######fig4 = px.scatter_3d(data, x = options_2[0], y = options_2[1], z = options_2[2])
+#fig5 = px.scatter_3d(data, x = "Growth rate", y = "Inhibitor Degeneration", z = "NP Binding")
+st.write(fig1)
+#with col1:
+#    st.write(fig3)
+#with col2:
+####st.write(fig4)
+#    st.write(fig5)
+
+
+#Subheader for MRI volumes
+st.subheader("Volumetric MRI Voxels:")
 
 vol = io.imread("https://s3.amazonaws.com/assets.datacamp.com/blog_assets/attention-mri.tif")
 volume = vol.T
